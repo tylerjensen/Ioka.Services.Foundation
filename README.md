@@ -1,7 +1,7 @@
 # Ioka.Services.Foundation
 Foundation for .NET Core microservices libraries including use of IdentityServer4, Swagger, Serilog and Elasticsearch.
 
-This library is NOT production ready. It simply represents much the shareable work I have been doing in .NET Core and microservices using IdentityServer4. It's a work in progress and my hope is that others may benefit from some of the things I'm learning in this code base. Some of this code comes from work I have done in the past and those for whom I did this work have granted me free license to share it with the community.
+This library is NOT production ready. It simply represents much of the shareable work I have been doing in .NET Core and microservices using IdentityServer4. It's a work in progress and my hope is that others may benefit from some of the things I'm learning in this code base. Some of this code comes from work I have done in the past and those for whom I did this work have granted me free license to share it with the community.
 
 ## Projects and Code
 
