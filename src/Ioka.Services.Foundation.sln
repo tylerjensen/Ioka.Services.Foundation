@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.271
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ioka.Services.Foundation", "Ioka.Services.Foundation\Ioka.Services.Foundation.csproj", "{5BAFA73E-5766-47CA-97B2-6EEA7668052E}"
 EndProject
@@ -15,9 +15,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ioka.Services.Client", "Iok
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ioka.Services.IdentityServer", "Ioka.Services.IdentityServer\Ioka.Services.IdentityServer.csproj", "{B9894FDE-A083-4698-8A6A-358D06052748}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ioka.Services.IdentityServer.Common", "Ioka.Services.IdentityServer.Common\Ioka.Services.IdentityServer.Common.csproj", "{F580376D-603B-4624-8543-EB1E21D91A1A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ioka.Services.IdentityServer.Common", "Ioka.Services.IdentityServer.Common\Ioka.Services.IdentityServer.Common.csproj", "{F580376D-603B-4624-8543-EB1E21D91A1A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ioka.Services.TestConsole", "Ioka.Services.TestConsole\Ioka.Services.TestConsole.csproj", "{D18EFE78-022A-48EF-AE77-64DCA72F0319}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ioka.Services.TestConsole", "Ioka.Services.TestConsole\Ioka.Services.TestConsole.csproj", "{D18EFE78-022A-48EF-AE77-64DCA72F0319}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{911619B7-ED7C-4EF5-BFA1-F0C62DD5FB90}"
+	ProjectSection(SolutionItems) = preProject
+		..\LICENSE = ..\LICENSE
+		..\README.md = ..\README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
