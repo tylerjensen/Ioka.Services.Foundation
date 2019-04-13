@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Ioka.Services.Demo.Providers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -29,6 +30,8 @@ namespace Ioka.Services.Demo.Config
             //     { "special", () => new SpecialHandler(x.GetService<IMyRepository>()) },
             //     { "my", () => new MyHandler(x.GetService<IMyRepository>()) }
             // });
+
+            services.AddScoped<IMathLoggingDemoProvider>((serviceProvider) => new MathLoggingDemoProvider());
         }
 
     }
