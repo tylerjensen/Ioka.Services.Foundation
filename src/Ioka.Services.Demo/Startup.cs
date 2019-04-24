@@ -54,7 +54,7 @@ namespace Ioka.Services.Demo
 
             services
                 .AddIokaVersionProvider(new VersionProvider())
-                .AddIokaLogging(config, Foundation.Logging.LogLevel.Debug, () => "test")
+                .AddIokaLogging(config, () => "test")
                 .AddMvc()
                 .AddIokaFormatters()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

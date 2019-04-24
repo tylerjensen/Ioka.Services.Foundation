@@ -34,8 +34,8 @@ namespace Ioka.Services.Foundation.Logging
         /// </summary>
         /// <param name="environment">The environment must be provided. This determines the ELK index, e.g. alog-local or alog-production.</param>
         /// <param name="config">Configuration for minimum log level and Elasticsearch connection details.</param>
-        public Log(ElasticConfig config, LogLevel level, Func<string> createIndexName) 
-            : this(config, level, createIndexName, null, null, null)
+        public Log(ElasticConfig config,  Func<string> createIndexName) 
+            : this(config, createIndexName, null, null, null)
         {
         }
 
@@ -45,8 +45,8 @@ namespace Ioka.Services.Foundation.Logging
         /// <param name="environment">The environment must be provided. This determines the ELK index, e.g. alog-local or alog-production.</param>
         /// <param name="config">Configuration for minimum log level and Elasticsearch connection details.</param>
         /// <param name="enrichers">Serilog enrichers. If null, the default LogEnricher is used.</param>
-        public Log(ElasticConfig config, LogLevel level, Func<string> createIndexName, ILogEventEnricher[] enrichers)
-            : this(config, level, createIndexName, null, null, enrichers)
+        public Log(ElasticConfig config,  Func<string> createIndexName, ILogEventEnricher[] enrichers)
+            : this(config, createIndexName, null, null, enrichers)
         {
         }
 
@@ -58,11 +58,10 @@ namespace Ioka.Services.Foundation.Logging
         /// <param name="failureSink">Serilog failure sink. Pass null if not used.</param>
         /// <param name="failureCallback">Serilog failure callback. Pass null if not used.</param>
         /// <param name="enrichers">Serilog enrichers. If null, the default LogEnricher is used.</param>
-        public Log(ElasticConfig config, LogLevel level, Func<string> createIndexName, ILogEventSink failureSink, Action<LogEvent> failureCallback, ILogEventEnricher[] enrichers) 
+        public Log(ElasticConfig config, Func<string> createIndexName, ILogEventSink failureSink, Action<LogEvent> failureCallback, ILogEventEnricher[] enrichers) 
         {
             _index = null == createIndexName ? "default" : createIndexName();
             _config = config;
-            _level = level;
             _enrichers = enrichers;
             _failureSink = failureSink;
             _failureCallback = failureCallback;
@@ -107,28 +106,6 @@ namespace Ioka.Services.Foundation.Logging
             }
             logConfig.Enrich.With(enrichers);
 
-            switch (_level)
-            {
-                case LogLevel.Trace:
-                    logConfig.MinimumLevel.Verbose();
-                    break;
-                case LogLevel.Debug:
-                    logConfig.MinimumLevel.Debug();
-                    break;
-                case LogLevel.Info:
-                    logConfig.MinimumLevel.Information();
-                    break;
-                case LogLevel.Warn:
-                    logConfig.MinimumLevel.Warning();
-                    break;
-                case LogLevel.Error:
-                    logConfig.MinimumLevel.Error();
-                    break;
-                default:
-                    logConfig.MinimumLevel.Fatal();
-                    break;
-            }
-
             _logger = logConfig.CreateLogger();
             var ctx = new LogContext();
         }
@@ -138,7 +115,7 @@ namespace Ioka.Services.Foundation.Logging
             context["_ThreadId-With"] = Environment.CurrentManagedThreadId.ToString(); //set to current thread
             var list = _enrichers.Where(x => x.GetType() != typeof(LogEnricher)).ToList();
             list.Insert(0, new LogEnricher(context, null));
-            return new Log(_config, _level, () => _index, _failureSink, _failureCallback, list.ToArray());
+            return new Log(_config, () => _index, _failureSink, _failureCallback, list.ToArray());
         }
 
         public ILogger Logger
